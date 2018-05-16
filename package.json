@@ -20,6 +20,11 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "elasticsearch": "^15.0.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "igdb-api-node": "^3.1.4"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.11.0"
   }
 }
