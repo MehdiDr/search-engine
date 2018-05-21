@@ -1,5 +1,5 @@
 const elasticsearch = require('elasticsearch');
-const cities = require('./data/cities.json');
+const cities = require('./cities.json');
 
 const client = new elasticsearch.Client({
     hosts: ['http://localhost:9200'] // 9200 is the default port used by elasticsearch
@@ -14,19 +14,7 @@ client.indices.create({
     index: 'elastic-test',
 }, (error, response) => error ? console.log(error) : console.log('created new index', response));
 
-client.index({
-    index: 'elastic-test',
-    id: '1',
-    type: 'cities_list',
-    body: {
-        "Key 1": "Content for key one",
-        "Key 2": "Content for key 2",
-        "Key 3": "Content for key 3",
-    }
-}, (err, resp, status) => console.log(resp) );
-
-const bulk = [];
-
+let bulk = [];
 cities.forEach(city => {
     bulk.push({ 
         index: {
@@ -37,5 +25,4 @@ cities.forEach(city => {
     bulk.push(city)
 });
 
-client.bulk({ body: bulk }, (err, resp) => 
-    err ? console.log('Failed Bulk Operation'.red, err) : console.log('Successfully imported %s'.green, cities.length));
+client.bulk({ body: bulk }, (err, res) => err ? console.log('COUCOU'.red, err) : console.log('Successfully imported %s'.green, cities.length));

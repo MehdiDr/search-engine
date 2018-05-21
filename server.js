@@ -2,7 +2,7 @@ const elasticsearch = require('elasticsearch');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-let port = process.env.PORT || 3001;
+let port = 3001 || process.env.PORT;
 
 const client = new elasticsearch.Client({
     hosts: [ 'http://localhost:9200']
