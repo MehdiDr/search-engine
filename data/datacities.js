@@ -25,4 +25,6 @@ cities.forEach(city => {
     bulk.push(city)
 });
 
-client.bulk({ body: bulk }, (err, res) => err ? console.log('COUCOU'.red, err) : console.log('Successfully imported %s'.green, cities.length));
+client.bulk({ body: bulk }, (err, res) => err ? 
+    console.log('Error ! All your base belong to us'.red, err) : 
+    console.log('Successfully imported %s'.green, cities.length));
